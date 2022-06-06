@@ -10,9 +10,11 @@ const Movie = ({ movie }) => {
         alt={original_title}
       />
       <h2>
-        <Link to={`/movie/${id}`}>{original_title}</Link>
+        <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
+          {original_title}
+        </Link>
       </h2>
-      <p>{overview}</p>
+      <p>{overview.length > 235 ? `${overview.slice(0, 235)}...` : overview}</p>
       <ul>
         {genre_ids.map((g) => (
           <li key={g}>{g}</li>

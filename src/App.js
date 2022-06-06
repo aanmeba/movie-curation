@@ -1,12 +1,17 @@
-import Button from "./Button";
-import styles from "./App.module.css";
+import Home from "./routes/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Detail from "./routes/Detail";
 
 const App = () => {
   return (
-    <div>
-      <h1 className={styles.title}>Welcome back!</h1>
-      <Button text={"Continue"} />
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:id" element={<Detail />} />
+        </Routes>
+      </Router>
+    </>
   );
 };
 

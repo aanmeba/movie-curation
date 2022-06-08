@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/movie-curation/static/js/main.d536ef64.js",
+    "main.js": "/movie-curation/static/js/main.5eb6bd3b.js",
     "index.html": "/movie-curation/index.html",
-    "main.d536ef64.js.map": "/movie-curation/static/js/main.d536ef64.js.map"
+    "main.5eb6bd3b.js.map": "/movie-curation/static/js/main.5eb6bd3b.js.map"
   },
   "entrypoints": [
-    "static/js/main.d536ef64.js"
+    "static/js/main.5eb6bd3b.js"
   ]
 }

@@ -6,6 +6,8 @@ import {
   MovieDetailRight,
   Genres,
   Button,
+  Ul,
+  Li,
 } from "../components/StyledComponents";
 
 const Detail = () => {
@@ -14,6 +16,18 @@ const Detail = () => {
 
   const [loading, setLoading] = useState(true);
   const [movieDetail, setMovieDetail] = useState("");
+
+  const {
+    original_title,
+    overview,
+    release_date,
+    genres,
+    runtime,
+    vote_average,
+  } = movieDetail;
+
+  const runtimeHour = Math.floor(runtime / 60);
+  const runtimeMin = Math.floor(((runtime % 60) / 60) * 100);
 
   const getMovie = async () => {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -30,7 +44,6 @@ const Detail = () => {
       setMovieDetail(data);
       setLoading(false);
     }
-    console.log(data);
   };
 
   useEffect(() => {
@@ -45,19 +58,33 @@ const Detail = () => {
         <MovieDetailContainer>
           <MovieDetailLeft
             src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`}
-            alt={movieDetail.original_title}
+            alt={original_title}
           />
           <MovieDetailRight>
-            <h1>{movieDetail.original_title}</h1>
-            <p>{movieDetail.overview}</p>
+            <h1>{original_title}</h1>
+            <Ul>
+              <Li>{release_date.split("-")[0]}</Li>
+              <Li>|</Li>
+              <Li>
+                {runtimeHour}h {runtimeMin}m
+              </Li>
+              <Li>|</Li>
+              <Li>⭐️ {vote_average}</Li>
+            </Ul>
+            <p>{overview}</p>
             <Genres>
-              {movieDetail.genres.map((genre, index) =>
-                index === movieDetail.genres.length - 1 ? (
-                  <p key={genre.id}>&nbsp;{genre.name} </p>
-                ) : (
-                  <p key={genre.id}>&nbsp;{genre.name}&nbsp;|</p>
-                )
-              )}
+              <Ul>
+                {genres.map((genre, index) =>
+                  index === genres.length - 1 ? (
+                    <Li key={genre.id}>{genre.name} </Li>
+                  ) : (
+                    <>
+                      <Li key={genre.id}>{genre.name}</Li>
+                      <Li>|</Li>
+                    </>
+                  )
+                )}
+              </Ul>
             </Genres>
 
             <Button onClick={() => navigate(-1)}>Back</Button>

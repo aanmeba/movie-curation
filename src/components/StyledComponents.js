@@ -1,26 +1,27 @@
 import styled from "styled-components";
 
+const fontFamily =
+  '-apple-system, BlinkMacSystemFont, system, "Noto Sans", noto, "Fira Sans", Segoe UI, "Droid Sans", "Droid Sans Fallback", "Roboto", "Cantarell", "Ubuntu", "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, Noto Color Emoji, Segoe UI Emoji, Segoe UI Symbol, emoji';
+
 export const AppTitle = styled.div`
   padding: 1rem;
-  /* background-color: beige; */
   font-size: 2em;
-  font-family: "Arial";
+  font-family: ${fontFamily};
   font-weight: bold;
   text-align: left;
-  color: #f0f0f0;
+  color: #000;
 `;
 
 export const AppContainer = styled.div`
   max-width: 65vw;
   margin: 0 auto;
-  font-family: "Arial";
+  font-family: ${fontFamily};
 `;
 
 export const MoviesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* align-items: flex-start; */
 `;
 
 export const MovieCard = styled.div`
@@ -28,7 +29,6 @@ export const MovieCard = styled.div`
   flex-direction: column;
   width: 200px;
   max-height: 500px;
-  /* background-color: aliceblue; */
   margin: 1em;
   border: 1px black solid;
 `;
@@ -39,8 +39,7 @@ export const Heading = styled.h1`
 `;
 
 export const MovieTitle = styled.span`
-  font-size: 1.2em;
-  /* font-family: "Arial"; */
+  font-size: 1.1em;
   font-weight: bold;
   text-align: left;
   padding: 5px;
@@ -49,7 +48,6 @@ export const MovieTitle = styled.span`
 
 export const Rates = styled.span`
   font-size: 1em;
-  /* font-family: "Arial"; */
   text-align: left;
   padding: 5px;
   display: block;
@@ -84,7 +82,7 @@ export const Genres = styled.div`
   margin: 0;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   padding: 0.5em;
   font-size: 0.9em;
   border: 1px black solid;
@@ -95,7 +93,24 @@ export const Button = styled.div`
   text-align: center;
 `;
 
-// export const Button = styled.button`
-//   width: 50px;
-//   border-radius: 15px;
-// `;
+export const Ul = styled.ul`
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+`;
+
+export const Li = styled.li`
+  margin-right: 10px;
+  text-align: center;
+`;
+
+export const Bottom = styled.div`
+  text-align: center;
+  padding-top: 50px;
+  height: 100px;
+  font-size: 1em;
+  margin-top: 2em;
+  color: grey;
+`;

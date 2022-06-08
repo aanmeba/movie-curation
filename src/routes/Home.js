@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
+import { MoviesContainer } from "../components/StyledComponents";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -27,11 +28,11 @@ const Home = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
+        <MoviesContainer>
           {movies.map((movie) => (
             <Movie movie={movie} />
           ))}
-        </div>
+        </MoviesContainer>
       )}
     </div>
   );

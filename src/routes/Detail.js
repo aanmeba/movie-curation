@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  MovieDetailContainer,
+  MovieDetailLeft,
+  MovieDetailRight,
+  Genres,
+  Button,
+} from "../components/StyledComponents";
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [movieDetail, setMovieDetail] = useState("");
@@ -34,16 +42,27 @@ const Detail = () => {
       {loading ? (
         <h1>Loading</h1>
       ) : (
-        <>
-          <h1>{movieDetail.original_title}</h1>
-          <h3>Genres</h3>
-          <ul>
-            {movieDetail.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-          <Link to={`${process.env.PUBLIC_URL}}/`}>Home</Link>
-        </>
+        <MovieDetailContainer>
+          <MovieDetailLeft
+            src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`}
+            alt={movieDetail.original_title}
+          />
+          <MovieDetailRight>
+            <h1>{movieDetail.original_title}</h1>
+            <p>{movieDetail.overview}</p>
+            <Genres>
+              {movieDetail.genres.map((genre, index) =>
+                index === movieDetail.genres.length - 1 ? (
+                  <p key={genre.id}>&nbsp;{genre.name} </p>
+                ) : (
+                  <p key={genre.id}>&nbsp;{genre.name}&nbsp;|</p>
+                )
+              )}
+            </Genres>
+
+            <Button onClick={() => navigate(-1)}>Back</Button>
+          </MovieDetailRight>
+        </MovieDetailContainer>
       )}
     </>
   );

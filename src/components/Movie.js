@@ -1,26 +1,26 @@
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { MovieTitle, Rates, Poster, MovieCard } from "./StyledComponents";
 
 const Movie = ({ movie }) => {
-  const { id, poster_path, original_title, overview, genre_ids } = movie;
+  console.log(movie);
+  const { id, poster_path, original_title, vote_average, vote_count } = movie;
   return (
-    <div key={id}>
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-        alt={original_title}
-      />
-      <h2>
-        <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
-          {original_title}
-        </Link>
-      </h2>
-      <p>{overview.length > 235 ? `${overview.slice(0, 235)}...` : overview}</p>
-      <ul>
-        {genre_ids.map((g) => (
-          <li key={g}>{g}</li>
-        ))}
-      </ul>
-    </div>
+    <Link
+      to={`${process.env.PUBLIC_URL}/movie/${id}`}
+      style={{ textDecoration: "none" }}
+    >
+      <MovieCard key={id}>
+        <Poster
+          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          alt={original_title}
+        />
+        <Rates>
+          ⭐️ {vote_average} ({vote_count})
+        </Rates>
+        <MovieTitle>{original_title}</MovieTitle>
+      </MovieCard>
+    </Link>
   );
 };
 
